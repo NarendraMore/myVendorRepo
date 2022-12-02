@@ -1,0 +1,92 @@
+::ng-deep .pbutton {
+  background-color: #d93954;
+  border-color: white;
+}
+
+.pbutton:hover {
+  background-color: #d30628;
+  border-color: white;
+}
+
+::ng-deep .userDialog{
+  color: #e68897;
+}
+
+.search{
+  float: right;
+  padding-top: 10px;
+}
+
+.roles , h1{
+  color: #415385;
+  font-size: 34px;
+  font-family: "Helvetica";
+  padding-top: 20px;
+}
+
+.newroles{
+  color: #415385;
+  font-size: 34px;
+  font-family: "Helvetica";
+}
+
+::ng-deep .accesscard{
+
+  background-color: #F3F3F3;
+  
+}
+
+.access , h3{
+  color: #3A3A3A;
+  font-size: 22px;
+  font-family: "Helvetica ";
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.myTable::ng-deep *{
+  background-color: #9AA4BE !important;
+}
+
+::ng-deep .buttons{
+  margin-bottom: 20px;
+  float: right;
+}
+
+::ng-deep .pbuttonclass{
+  background-color: #D04A02;
+  color: white;
+  float: right;
+  margin-right: 10px !important;
+  border: none;
+  font-family: Helvetica;
+}
+
+.pbuttonclass:hover{
+  background-color: #D04A02;
+  color: white;
+}
+
+::ng-deep input{
+  margin-top: 10px !important;
+}
+
+::ng-deep .dropdown{
+  margin-top: 10px !important;
+  /* height: 40px; */
+  /* width: 150px; */
+}
+
+tr:nth-child(even) {
+  background-color: #F3F3F3;
+}
+
+::ng-deep .balancesheettable {
+  border-radius: 10px;
+  border: 2px solid #9aa4be !important;
+  overflow: hidden !important;
+}
+
+/* ::ng-deep label {
+  font-weight: bold;
+} */

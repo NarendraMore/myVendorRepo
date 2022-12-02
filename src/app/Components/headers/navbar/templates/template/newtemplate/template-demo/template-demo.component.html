@@ -1,0 +1,309 @@
+<form [formGroup]="productsForm">
+  <div formArrayName="category" style="overflow-x: scroll;min-height: auto;">
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th>Category </th>
+          <th>Weightage</th>
+          <table style="width: 100%;">
+            <tr>
+              <th>Sub-Category</th>
+              <th>Weightage</th>
+
+              <table style="width: 100%;">
+                <tr>
+                  <th>Sub-Category Two</th>
+                  <th>Weightage</th>
+                  <table style="width: 100%;">
+                    <tr>
+                      <th>Sub-Category Three</th>
+                      <th>Weightage</th>
+                      <table style="width: 100%;">
+                        <tr>
+                          <th>Parameter</th>
+                          <th>Weightage</th>
+                          <th>Max Score</th>
+                          <th>Scoring Criteria</th>
+                        </tr>
+                      </table>
+                    </tr>
+                  </table>
+                </tr>
+              </table>
+            </tr>
+          </table>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of getCategoryControls().controls; let i=index">
+          <div [formGroupName]="i" class="display">
+            <td style="width: 50%;">
+              <p-cascadeSelect id="username" formControlName="name" [options]="categoriesData" optionLabel="name"
+                optionValue="name" optionGroupLabel="name" [optionGroupChildren]="['states', 'cities']"
+                [style]="{ width: '14rem' }" placeholder="Select" appendTo="body"></p-cascadeSelect>
+              <p>
+                <mat-error *ngIf="(
+                    getCategoryControls()?.at(i)?.dirty ||
+                    getCategoryControls()?.at(i)?.touched
+                 ) &&
+                 getCategoryControls()?.at(i)?.errors?.['categoryError']"> Duplicate category name is not allowed
+                </mat-error>
+              </p>
+              <button class="bottun-align" mat-icon-button [matMenuTriggerFor]="cat"
+                aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <!-- <button type="button" (click)="addCategory()">Add Category</button>
+                <button type="button" (click)="removeCategory(i)">Remove Category</button> -->
+              <mat-menu #cat="matMenu">
+                <button mat-menu-item (click)="initCombine(i, 'category')">
+                  <mat-icon>merge_type</mat-icon>
+                  <span>Combine Category</span>
+                </button>
+                <button mat-menu-item (click)="addCategory()">
+                  <mat-icon>edit</mat-icon>
+                  <span>Add new Category</span>
+                </button>
+                <button mat-menu-item (click)="removeCategory(i)">
+                  <mat-icon>delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+              </mat-menu>
+            </td>
+            <td style="width: 50%;">
+              <input pInputText type="number" class="form-control" id="email" formControlName="weightage" readonly>
+            </td>
+            <!-- subcategory Start-->
+            <div formArrayName="subcategory">
+              <table style="width: 100%;">
+                <tr *ngFor="let subCategory of getSubCategoryControls(i).controls; let j=index">
+                  <div [formGroupName]="j" class="display">
+                    <td style="width: 50%;">
+                      <p-cascadeSelect id="subcategoryname" formControlName="subcategoryname" [options]="categoriesData"
+                        optionLabel="name" optionValue="name" optionGroupLabel="name"
+                        [optionGroupChildren]="['states', 'cities']" [style]="{ width: '14rem' }"
+                        placeholder="Select" appendTo="body">
+                      </p-cascadeSelect>
+                      <p>
+                        <mat-error *ngIf="(
+                          getSubCategoryControls(i)?.at(j)?.dirty ||
+                          getSubCategoryControls(i)?.at(j)?.touched
+                       ) &&
+                       getSubCategoryControls(i)?.at(j)?.errors?.['subCategoryError']"> Duplicate subcategory name is
+                          not allowed</mat-error>
+                      </p>
+                      <button class="bottun-align" mat-icon-button [matMenuTriggerFor]="sub"
+                        aria-label="Example icon-button with a menu">
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+                      <mat-menu #sub="matMenu">
+                        <button mat-menu-item (click)="initCombine(i, 'subCategory', j)">
+                          <mat-icon>merge_type</mat-icon>
+                          <span>Combine Sub Category</span>
+                        </button>
+                        <button mat-menu-item (click)="addSubCategory(i)">
+                          <mat-icon>edit</mat-icon>
+                          <span>Add new Sub Category</span>
+                        </button>
+                        <button mat-menu-item (click)="removeSubCategory(i,j)">
+                          <mat-icon>delete</mat-icon>
+                          <span>Delete</span>
+                        </button>
+                      </mat-menu>
+                      <!-- <button type="button" (click)="addSubCategory(i)">Add Sub Category</button>
+                    <button type="button" (click)="removeSubCategory(i,j)">Remove Sub Category</button> -->
+                    </td>
+                    <td style="width: 50%;">
+                      <input pInputText type="text" class="form-control" readonly id="username" formControlName="weightage">
+                    </td>
+                    <!-- subcategoryTwo Start -->
+                    <div formArrayName="subcategoryTwo">
+                      <table style="width: 100%;">
+                        <tr *ngFor="let subCategoryTwo of getSubCategoryTwoControls(i,j).controls; let k=index">
+                          <div [formGroupName]="k" class="display">
+                            <td>
+                              <p-cascadeSelect id="subcategoryname" formControlName="subcategoryname"
+                                [options]="categoriesData" optionLabel="name" optionValue="name" optionGroupLabel="name"
+                                [optionGroupChildren]="['states', 'cities']" [style]="{ width: '14rem' }"
+                                placeholder="Select" appendTo="body">
+                              </p-cascadeSelect>
+                              <p>
+                                <!-- <mat-error> Duplicate subcategory name is not allowed</mat-error> -->
+                              </p>
+                              <button class="bottun-align" mat-icon-button [matMenuTriggerFor]="subCatTwo"
+                                aria-label="Example icon-button with a menu">
+                                <mat-icon>more_vert</mat-icon>
+                              </button>
+                              <mat-menu #subCatTwo="matMenu">
+                                <button mat-menu-item (click)="initCombine(i, 'subCategoryTwo', j, k)">
+                                  <mat-icon>merge_type</mat-icon>
+                                  <span>Combine Sub Category Two</span>
+                                </button>
+                                <button mat-menu-item (click)="addSubCategoryTwo(i,j)">
+                                  <mat-icon>edit</mat-icon>
+                                  <span>Add new Sub Category Two</span>
+                                </button>
+                                <button mat-menu-item (click)="removeSubCategoryTwo(i,j,k)">
+                                  <mat-icon>delete</mat-icon>
+                                  <span>Delete</span>
+                                </button>
+                              </mat-menu>
+                              <!-- <button type="button" (click)="addSubCategory(i)">Add Sub Category</button>
+                            <button type="button" (click)="removeSubCategory(i,j)">Remove Sub Category</button> -->
+                            </td>
+                            <td>
+                              <input pInputText type="text" class="form-control" readonly id="username"
+                                formControlName="weightage">
+                            </td>
+                            <!-- Start subcategoryThree -->
+                            <div formArrayName="subcategoryThree">
+                              <table style="width: 100%;">
+                                <tr
+                                  *ngFor="let subCategoryThree of getSubCategoryThreeControls(i,j,k).controls; let l=index">
+                                  <div [formGroupName]="l" class="display">
+                                    <td>
+                                      <p-cascadeSelect id="subcategoryname" formControlName="subcategoryname"
+                                        [options]="categoriesData" optionLabel="name" optionValue="name"
+                                        optionGroupLabel="name" [optionGroupChildren]="['states', 'cities']"
+                                        [style]="{ width: '14rem' }" placeholder="Select" appendTo="body">
+                                      </p-cascadeSelect>
+                                      <p>
+                                        <!-- <mat-error> Duplicate subcategory name is not allowed</mat-error> -->
+                                      </p>
+                                      <button class="bottun-align" mat-icon-button [matMenuTriggerFor]="subCatThree"
+                                        aria-label="Example icon-button with a menu">
+                                        <mat-icon>more_vert</mat-icon>
+                                      </button>
+                                      <mat-menu #subCatThree="matMenu">
+                                        <button mat-menu-item (click)="initCombine(i, 'subCategoryThree', j, k, l)">
+                                          <mat-icon>merge_type</mat-icon>
+                                          <span>Combine Sub Category Three</span>
+                                        </button>
+                                        <button mat-menu-item (click)="addSubCategoryThree(i,j,k)">
+                                          <mat-icon>edit</mat-icon>
+                                          <span>Add new Sub Category Three</span>
+                                        </button>
+                                        <button mat-menu-item (click)="removeSubCategoryThree(i,j,k,l)">
+                                          <mat-icon>delete</mat-icon>
+                                          <span>Delete</span>
+                                        </button>
+                                      </mat-menu>
+                                      <!-- <button type="button" (click)="addSubCategory(i)">Add Sub Category</button>
+                                      <button type="button" (click)="removeSubCategory(i,j)">Remove Sub Category</button> -->
+                                    </td>
+                                    <td>
+                                      <input pInputText type="text" class="form-control" readonly id="username"
+                                        formControlName="weightage">
+                                    </td>
+                                    <!-- parameter Start-->
+                                    <div formArrayName="parameter">
+                                      <table style="width: 100%;">
+                                        <tr *ngFor="let subCategory of getParameterControls(i,j,k,l).controls; let m=index">
+                                          <div [formGroupName]="m">
+                                            <td>
+                                              <p-cascadeSelect id="parametername" formControlName="parametername"
+                                                [options]="categoriesData" optionLabel="name" optionValue="name"
+                                                optionGroupLabel="name" [optionGroupChildren]="['states', 'cities']"
+                                                [style]="{ width: '14rem' }" placeholder="Select" appendTo="body"></p-cascadeSelect>
+                                              <p>
+                                                <mat-error *ngIf="(
+                                                      getParameterControls(i,j,k,l)?.at(m)?.dirty ||
+                                                      getParameterControls(i,j,k,l)?.at(m)?.touched
+                                                   ) &&
+                                                   getParameterControls(i,j,k,l)?.at(m)?.errors?.['parameterError']">
+                                                  Duplicate parameter name is not allowed</mat-error>
+                                              </p>
+                                              <button class="bottun-align" mat-icon-button [matMenuTriggerFor]="para"
+                                                aria-label="Example icon-button with a menu">
+                                                <mat-icon>more_vert</mat-icon>
+                                              </button>
+                                              <mat-menu #para="matMenu">
+                                                <button mat-menu-item (click)="initCombine(i, 'parameter',j,k,l,m)">
+                                                  <mat-icon>merge_type</mat-icon>
+                                                  <span>Move to existing Subcategory</span>
+                                                </button>
+                                                <button mat-menu-item (click)="addParameter(i,j,k,l)">
+                                                  <mat-icon>edit</mat-icon>
+                                                  <span>Add new parameter</span>
+                                                </button>
+                                                <button mat-menu-item (click)="removeParameter(i,j,k,l,m)">
+                                                  <mat-icon>delete</mat-icon>
+                                                  <span>Delete</span>
+                                                </button>
+                                              </mat-menu>
+                                            </td>
+                                            <td>
+                                              <input pInputText type="text" class="form-control" readonly id="username"
+                                                formControlName="weightage">
+                                            </td>
+                                            <td>
+                                              <input pInputText type="text" class="form-control" id="maxschore"
+                                                formControlName="maxschore">
+                                            </td>
+
+                                            <td>
+                                              <div formArrayName="schoringcriteria">
+                                                <table style="width: 100%;">
+                                                  <tr
+                                                    *ngFor="let scoringCriteria of getScoringCriteriaControls(i,j,k,l,m).controls; let n=index">
+                                                    <div [formGroupName]="n">
+                                                      <td>
+                                                        <input pInputText type="text" class="form-control" id="criteriaValue"
+                                                          formControlName="criteriaValue">
+                                                      </td>
+                                                      <td>
+                                                        <button class="bottun-align" mat-icon-button
+                                                          [matMenuTriggerFor]="maxScore"
+                                                          aria-label="Example icon-button with a menu">
+                                                          <mat-icon>more_vert</mat-icon>
+                                                        </button>
+                                                        <mat-menu #maxScore="matMenu">
+                                                          <button mat-menu-item (click)="addScoringCriteria(i,j,k,l,m)">
+                                                            <mat-icon>edit</mat-icon>
+                                                            <span>Add Criteria</span>
+                                                          </button>
+                                                          <button mat-menu-item
+                                                            (click)="removeScoringCriteria(i,j,k,l,m,n)">
+                                                            <mat-icon>delete</mat-icon>
+                                                            <span>Delete</span>
+                                                          </button>
+                                                        </mat-menu>
+                                                      </td>
+                                                    </div>
+                                                  </tr>
+                                                </table>
+                                              </div>
+                                            </td>
+
+                                          </div>
+                                        </tr>
+                                      </table>
+                                    </div>
+                                    <!-- parameter End -->
+
+
+                                  </div>
+                                </tr>
+                              </table>
+                            </div>
+                            <!-- End subcategoryThree -->
+
+                          </div>
+                        </tr>
+                      </table>
+                    </div>
+                    <!-- subcategoryTwo End -->
+                  </div>
+                </tr>
+              </table>
+            </div>
+            <!-- subcategory End-->
+          </div>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</form>
+
+<p-divider></p-divider>
+<p-button (click)="onSave()"> Save </p-button>

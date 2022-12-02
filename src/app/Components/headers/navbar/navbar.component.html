@@ -1,0 +1,201 @@
+<div class="container">
+  <div class="cardData" style="width: 100%">
+    <div class="flex card-container">
+      <div class="flex-none flex justify-content-center m-1 px-1 " style="margin-top:20px;">
+        <!-- <i
+          class="pi pi-bars"
+          style="float: left; padding: 1rem; font-size: 2rem; cursor: pointer; color: #252525;"
+          (click)="sideBar()"
+        ></i> -->
+        <img style="width: 100px; margin-top: 10px;" src="assets\Images\unnamed_copy1.png" alt="Logo" />
+      </div>
+      <div
+        class="flex-grow-1 mr-2 " style="margin-top:20px;"
+      >
+        <span class="title1">Vendor Qualification Tool</span>
+      </div>
+
+      <div class="flex" style="float: right">
+        <label
+          style="
+            color: #7d7d7d;
+            font-family: Helvetica;
+            font-size: 20px;
+            padding: 20px 10px;
+          "
+        >
+          <i class="pi pi-cog"></i> Settings</label
+        >
+        &nbsp;
+        <label
+          style="
+            color: #7d7d7d;
+            font-family: Helvetica;
+            font-size: 20px;
+            padding: 20px 10px;
+          "
+        >
+          <i class="pi pi-bell"></i> Notifications</label
+        >
+      </div>
+
+      <div
+        class="flex-none flex align-items-center justify-content-center m-2 px-3"
+      >
+        <!-- <span class="userData" style="font-size: larger; font-family: Georgia"
+          >Welcome {{ user }}</span
+        > -->
+        <!-- <img src="assets\Images\user.png" alt="profile" /> -->
+        <span
+        [matMenuTriggerFor]="cat"
+                aria-label="Example icon-button with a menu"
+          style="
+            border-radius: 100%;
+            background-color: #d04a02;
+            padding: 10px;
+            margin-bottom: 15px;
+          "
+          >AS</span
+        >
+        <!-- <button class="bottun-align" mat-icon-button [matMenuTriggerFor]="cat"
+                aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button> -->
+        <mat-menu #cat="matMenu">
+          <button mat-menu-item >
+            <mat-icon>logout</mat-icon>
+            <span style="color: black;">Logout</span>
+          </button>
+       
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+
+  <!-- Left Panel -->
+
+  <!-- <div class="leftpanel">
+    <div *ngIf="sidebar" class="nav-pane">
+      <div>
+        <ul class="listItem">
+          
+          <li class="item" (click)="onClicProjectMngmnt()">
+            <i class="pi pi-book"></i>&nbsp; &nbsp;<a> Projects</a>
+          </li>
+          <li class="item" (click)="onClicProjectMngmnt()">
+            <i class="pi pi-file"></i>&nbsp; &nbsp;<a> Templates</a>
+          </li>
+          <li class="item" (click)="onClicVendorMngmnt()">
+            <i class="pi pi-users"></i>&nbsp; &nbsp;<a> Vendors</a>
+          </li>
+          <li class="item" (click)="onClicRoleMngmnt()">
+            <i class="pi pi-server"></i>&nbsp; &nbsp;<a> Roles</a>
+          </li>
+          <li class="item" (click)="onClicUserMngmnt()">
+            <i class="pi pi-user"></i>&nbsp; &nbsp;<a> Users</a>
+          </li>
+          <li class="item" (click)="logout()">
+            <i class="pi pi-sign-out"></i>&nbsp; &nbsp;<a> Logout</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        
+      </div> -->
+
+  <!-- New Left Panel -->
+
+  <!-- <div class="leftpanel">
+    <div class="nav-pane">
+      <div>
+        <ul class="listItem">
+          <li class="item" (click)="onClicRoleMngmnt()">
+            <i class="pi pi-server"></i>&nbsp;
+            <a *ngIf="sidebar">Roles</a>
+          </li>
+          <li class="item" (click)="onClicUserMngmnt()">
+            <i class="pi pi-user"></i>&nbsp;
+            <a *ngIf="sidebar">Users</a>
+          </li>
+          <li class="item" (click)="onClicVendorMngmnt()">
+            <i class="pi pi-users"></i>&nbsp;
+            <a *ngIf="sidebar">Vendor</a>
+          </li>
+          <li class="item active" (click)="onClicProjectMngmnt()">
+            <i class="pi pi-book"></i>&nbsp;
+            <a class="active" *ngIf="sidebar">Projects</a>
+          </li>
+          <li class="item active" (click)="onClicTemplateMngmnt()">
+            <i class="pi pi-file"></i>&nbsp;
+            <a *ngIf="sidebar">Templates</a>
+          </li>
+          <li class="item" (click)="onClickLibrary()">
+            <i class="pi pi-database"></i>&nbsp;
+            <a *ngIf="sidebar">Library</a>
+          </li>
+          -->
+
+  <!-- <li class="item" (click)="logout()">
+            <i class="pi pi-sign-out"></i>&nbsp;
+            <a *ngIf="sidebar">Logout</a>
+          </li> -->
+  <!-- </ul>
+        <ul>
+          <li class="toggle" (click)="sideBar()">
+            <i *ngIf="sidebar" class="pi pi-fast-backward"></i>
+            <i *ngIf="!sidebar" class="pi pi-fast-forward"></i>&nbsp;
+            <a *ngIf="sidebar">Collapse</a>
+          </li>
+        </ul>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="pages">
+      
+    </div>
+  </div> -->
+  <!--IR DEMO SIDEBAR-->
+  <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
+    <div class="logo-container">
+      <span *ngIf="!collapsed"  (click)="toggleCollapse()">
+        <img
+          src="assets\Images\collapse_out.png"
+          alt=""  
+        />
+      </span>
+
+      <span *ngIf="collapsed"  (click)="toggleCollapse()">
+        <img
+          src="assets\Images\collapse_in.png"
+          alt=""
+        />
+       <label class="collapse">Collapse</label>
+      </span>
+      <div class="logo-text" *ngIf="collapsed"></div>
+    </div>
+    <ul class="sidenav-nav">
+      <li class="sidenav-nav-item" *ngFor="let data of navData">
+        <a
+          class="sidenav-nav-link"
+          [routerLink]="[data.routeLink]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="toggleCollapse1()"
+        >
+          <img class="sidenav-link-icon" [src]="[data.image]" alt="" />
+
+          <span class="sidenav-link-text" *ngIf="collapsed">
+            {{ data.label }}
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pages">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="blank"></div>
+</div>

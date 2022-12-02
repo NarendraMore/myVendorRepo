@@ -1,0 +1,30 @@
+.bottun-align{
+    position: relative;
+    right: -1px;
+    top: 5px;
+}
+
+.sub-category {
+    margin: 10px 50px;
+    border: 2px solid black;
+}
+
+.parameter {
+    margin: 10px 50px;
+    border: 2px solid black;
+}
+
+.display{
+    display: contents;
+}
+
+input {
+    width: 6rem;
+}
+
+table thead th {
+    text-align: justify;
+}
+/* table {
+    border: 1px solid black;
+  } */

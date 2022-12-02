@@ -1,0 +1,23 @@
+.roles,
+h1 {
+  color: #415385;
+  font-size: 34px;
+  font-family: "Helvetica";
+}
+
+.search {
+  float: right;
+}
+.myTable::ng-deep * {
+  background-color: #d2d7e2 !important;
+}
+
+::ng-deep dropdown{
+  overflow-y: auto !important;
+  overflow-wrap: auto !important;
+}
+
+ng-deep .templateTable{
+  overflow-y: visible !important;
+  overflow-wrap: visible !important;
+}

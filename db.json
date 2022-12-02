@@ -1,0 +1,1003 @@
+{
+  "categoryDropdown": [
+    {
+      "label": "Category",
+      "data": "Documents Folder",
+      "expandedIcon": "pi pi-folder-open",
+      "collapsedIcon": "pi pi-folder",
+      "children": [
+        {
+          "label": "Organisation Profile"
+        },
+        {
+          "label": "IT Infrastructure Services"
+        },
+        {
+          "label": "Security Services Offerings (On Going) & IT SOC Service Offering (One Time) "
+        },
+        {
+          "label": "Service level Agreement"
+        },
+        {
+          "label": "Transition Approach"
+        },
+        {
+          "label": "Adherence to Regulations/Standard and Compliance"
+        },
+        {
+          "label": "Continuous Improvement"
+        },
+        {
+          "label": "Commercial Evaluation"
+        },
+        {
+          "label": "Organisation Profile"
+        },
+        {
+          "label": "Experience and Customer References"
+        },
+        {
+          "label": "Commercial Evaluation (Security - 5 Year)"
+        },
+        {
+          "label": "Commercial Evaluation (Infra- 5 Year)"
+        }
+      ]
+    },
+    {
+      "label": "Sub-category",
+      "data": "Pictures Folder",
+      "expandedIcon": "pi pi-folder-open",
+      "collapsedIcon": "pi pi-folder",
+      "children": [
+        {
+          "label": "End User Computing services scope"
+        },
+        {
+          "label": "Servers support "
+        },
+        {
+          "label": "Network services support"
+        },
+        {
+          "label": "For O365/M365 services support"
+        },
+        {
+          "label": "For Cloud Infrastructure support"
+        },
+        {
+          "label": "Proposed Geographical distribution of Manpower"
+        },
+        {
+          "label": "Understand and provide the skill matrix for Manpower deployed",
+          "children": [
+            {
+              "label": "Governance Service Delivery Manager"
+            },
+            {
+              "label": "Server Management - L1 L2 L3"
+            },
+            {
+              "label": "Network Management - L1 L2 L3"
+            },
+            {
+              "label": "Cloud Infrastructure Management - L1 L2 L3"
+            },
+            {
+              "label": "End User Computing Management - L1 L2"
+            }
+          ]
+        },
+        {
+          "label": "Compliant to Client's current technology landscape"
+        },
+        {
+          "label": "Approach and Methodology"
+        },
+        {
+          "label": "Exceptions"
+        },
+        {
+          "label": "Offering NG SIEM "
+        },
+        {
+          "label": "Offering User and Entity Behavior Analytics (UEBA )"
+        },
+        {
+          "label": "Offering Threat prevention/detection services"
+        },
+        {
+          "label": "Offering Anti-Rogue and Anti-fraud monitoring and take down service"
+        },
+        {
+          "label": "Offering Specification for Incident Response"
+        },
+        {
+          "label": "Offering Remote NG SOC Support Centre"
+        },
+        {
+          "label": "Offering Data Ingestion Capability"
+        },
+        {
+          "label": "Understand and provide the skill matrix for Manpower deployed  NG SOC Management - L1,L2,L3"
+        },
+        {
+          "label": "Scope covers remediation"
+        },
+        {
+          "label": "Comply to the in-scope services corresponding SLA and terms"
+        },
+        {
+          "label": "Comply to SLA Pentalties"
+        },
+        {
+          "label": "Transition Approach"
+        },
+        {
+          "label": "Adherence to Transition Timeline (Transition Period - 3 months. 30 days parallel run with incumbent partner at least 15 days independently i.e. incumbent partner will shadow and bidder will manage)"
+        },
+        {
+          "label": "ISO 27002"
+        },
+        {
+          "label": "NIST Cyber Security Framework"
+        },
+        {
+          "label": "If bidder has given compliance any additional standards, regulation or framework "
+        },
+        {
+          "label": "Efficiency through Automation"
+        },
+        {
+          "label": "Improvement in SLA - Process change and Skill development"
+        },
+        {
+          "label": "Reduction in operating cost"
+        },
+        {
+          "label": "Y-o-Y scalability addressed without any additional cost"
+        },
+        {
+          "label": "Reduction of defects/incidents"
+        },
+        {
+          "label": "Commercial Quotes"
+        },
+        {
+          "label": "Number of References provided (Min 3 each for SOC and Infra)"
+        },
+        {
+          "label": "Details of services provided to the company"
+        },
+        {
+          "label": "Similar size and scale"
+        },
+        {
+          "label": "AWS (IaaS, PaaS) Components"
+        },
+        {
+          "label": "Third party technologies"
+        },
+        {
+          "label": "Anti-Virus"
+        },
+        {
+          "label": "SIEM Tool"
+        },
+        {
+          "label": "Incident Management/ Helpdesk"
+        },
+        {
+          "label": "Service Requests & Change Request"
+        },
+        {
+          "label": "Patch Management/ Antivirus"
+        },
+        {
+          "label": "Uptime"
+        },
+        {
+          "label": "Others"
+        }
+      ]
+    },
+    {
+      "label": "Parameter",
+      "data": "Movies Folder",
+      "expandedIcon": "pi pi-folder-open",
+      "collapsedIcon": "pi pi-folder",
+      "children": [
+        {
+          "label": "Service Desk"
+        },
+        {
+          "label": "Incident management"
+        },
+        {
+          "label": "Problem management"
+        },
+        {
+          "label": "Asset and configuration management (IMAC)"
+        },
+        {
+          "label": "Change and release management including timely firmware upgrades, build upgrades and version upgrades"
+        },
+        {
+          "label": "Availability Management"
+        },
+        {
+          "label": "Monitoring Management"
+        },
+        {
+          "label": "Capacity Management"
+        },
+        {
+          "label": "Backup Management"
+        },
+        {
+          "label": "Security Management"
+        },
+        {
+          "label": "Customer Relationship Management"
+        },
+        {
+          "label": "Vendor Management"
+        },
+        {
+          "label": "Disaster Recovery Support"
+        },
+        {
+          "label": "In Scope Software level upgrade and Update Management services"
+        },
+        {
+          "label": "Support in upgrading all in scope technologies to the latest platform/versions as necessary to manage EOL/EOS"
+        },
+        {
+          "label": "Replace a product that is managed by incumbent, incumbent will be responsible for assisting in deployment/migration and on-going support with same service level commitment."
+        },
+        {
+          "label": "The supplier will be expected to extend services to deploy and support new IT projects and activities. The supplier may be asked to extend its management services to support such new technologies on an on-going basis."
+        },
+        {
+          "label": "Windows Server 2003,2008 2012, 2016, 2019 & above. Data Center Edition and Linux Servers"
+        },
+        {
+          "label": "AD, DNS, DHCP, ADFS, File services, Print server Management, NTP, IIS, Network Policy and Access Services, Remote Access, Remote Desktop Services, Windows Deployment Services"
+        },
+        {
+          "label": "O365 Services (Email, MS Teams, Yammer, One Drive)"
+        },
+        {
+          "label": "O365 Services (SharePoint Online)"
+        },
+        {
+          "label": "Exclaimer Tool on Azure"
+        },
+        {
+          "label": "WSUS, SCCM including IBCM, Cloud native patching tools"
+        },
+        {
+          "label": "Router & Network Management (Cisco, HP, Juniper etc.)"
+        },
+        {
+          "label": "Cisco Call Manager / VOIP telephony/Avaya or any other EPBX for NA"
+        },
+        {
+          "label": "VMWare Hypervisor"
+        },
+        {
+          "label": "Microsoft Hypervisor"
+        },
+        {
+          "label": "Dell, Bidder, HP Server Hardware, IDRAC and similar OEM hardware monitoring tools"
+        },
+        {
+          "label": "Forcepoint Web Content Management tool (Proxy) – On-Premise, Cloud, Hybrid"
+        },
+        {
+          "label": "Miraki Wireless Network solution with Cisco ISE for Identity management"
+        },
+        {
+          "label": "Backup – Barracuda, Veritas Net-Backup appliances & Solution, Druva M365, Phoenix, Cloud Native Backups etc."
+        },
+        {
+          "label": "Storage Management (Bidder, Quantum, Dell, HP, Nimble and DotHill SANs), SAN switch Management"
+        },
+        {
+          "label": "Site24X7 Monitoring tool & Symphony Summit Monitoring tool Whatsup Gold, Manage Engine, Netflow analyzer, Syslog, Cloudwatch, and other cloud native tools etc."
+        },
+        {
+          "label": "Manage Engine AD self-service tool for password reset and similar"
+        },
+        {
+          "label": "End Point Backup Solution (ALN, Druva, DataCastle, Retrospect and similar)"
+        },
+        {
+          "label": "Lansweeper Asset Discovery S/W"
+        },
+        {
+          "label": "Data Encryption (Bitlocker, PGP etc.)"
+        },
+        {
+          "label": "Load Balancer (Radware, F5 etc.)"
+        },
+        {
+          "label": "Citrix Netscaler and citrix XenApp"
+        },
+        {
+          "label": "FTP & SFTP Server & client"
+        },
+        {
+          "label": "Azure Infrastructure"
+        },
+        {
+          "label": "AWS Infrastructure *(Details in below table)"
+        },
+        {
+          "label": "DR Services for ERP (Baan, LN, SAP) and critical applications etc."
+        },
+        {
+          "label": "Data Center Equipment (Precision AC, Bry Air Dehumidifier, CCTV , Access Control, Fire Supression, VESDA, Rodent & Water Leakage Detection System"
+        },
+        {
+          "label": "Managed Printing Solution (Uniflow etc.)"
+        },
+        {
+          "label": "Zoom, WebEx, Amazon Chime etc."
+        },
+        {
+          "label": "Audio-Video Conferencing System"
+        },
+        {
+          "label": "TACACs"
+        },
+        {
+          "label": "Radius"
+        },
+        {
+          "label": "SD WAN as a service"
+        },
+        {
+          "label": "Compute "
+        },
+        {
+          "label": "IS 2 : NG SIEM"
+        },
+        {
+          "label": "IS4 : User and Entity Behavior Analytics (UEBA )"
+        },
+        {
+          "label": "IS5: Threat Hunting"
+        },
+        {
+          "label": "IS6: Anti-Rogue and Anti-fraud monitoring and take down service"
+        },
+        {
+          "label": "IS8: Specification for Incident Response"
+        },
+        {
+          "label": "IS9: Remote NG SOC Support Centre"
+        },
+        {
+          "label": "IS10: Data Ingestion Capability"
+        },
+        {
+          "label": "Firewall Management (Cisco, Fortinet, Palo Alto etc.)"
+        },
+        {
+          "label": "Mobile Device Management (Mass 360, Intune)"
+        },
+        {
+          "label": "Anti Virus & EDR Software (Trend Micro ApexOne, NGAV, CrowdStrike etc.)"
+        },
+        {
+          "label": "Data Leak Prevention (ForcePoint or similar)"
+        },
+        {
+          "label": "Microsoft Azure AD Premium & MFA"
+        },
+        {
+          "label": "Microsoft Defender for Office 365"
+        },
+        {
+          "label": "Microsoft Azure Information Protection"
+        },
+        {
+          "label": "Web Application Firewall (F5 etc.)"
+        },
+        {
+          "label": "Security & Identity"
+        },
+        {
+          "label": "N/W firewall"
+        },
+        {
+          "label": "WAF"
+        },
+        {
+          "label": "Anti-Virus"
+        },
+        {
+          "label": "SIEM"
+        },
+        {
+          "label": "TrendMicro, Crowdstrike/EDR/Over Watch"
+        },
+        {
+          "label": "McAfee or similar"
+        },
+        {
+          "label": "High criticality incident(P1 )*"
+        },
+        {
+          "label": "Medium criticality incident(P2) – Soft Security Incidents"
+        },
+        {
+          "label": "Low criticality incident(P3)"
+        },
+        {
+          "label": "SR - Normal (single"
+        },
+        {
+          "label": "SR - Normal (multiple users)"
+        },
+        {
+          "label": "Change Request – Emergency"
+        },
+        {
+          "label": "Change Request – Normal"
+        },
+        {
+          "label": "Patch Deployment"
+        },
+        {
+          "label": "Antivirus Deployment & update"
+        },
+        {
+          "label": "Network uptime"
+        },
+        {
+          "label": "server uptime"
+        },
+        {
+          "label": "Max acceptable downtime for Server/Network/Security Equipment"
+        },
+        {
+          "label": "Maximum Downtime acceptable for end user equipment"
+        },
+        {
+          "label": "Voice of customer"
+        },
+        {
+          "label": "Backup Policy/ Schedule adherence"
+        },
+        {
+          "label": "MIR and RCA"
+        }
+      ]
+    }
+  ],
+  "templateBuilder": [
+    {
+      "id": 1,
+      "category": {
+        "name": "Adherence to Regulations/Standard and Compliance"
+      },
+      "subcategory": "",
+      "parameter": {
+        "name": "Incident management"
+      },
+      "weightage": "100",
+      "maxschore": "20",
+      "schoringcriteria": "Criteria 2.4.1.1",
+      "catagoryWeightage": "100",
+      "subcategory1": {
+        "name": "Servers support"
+      },
+      "subcatagory1Weightage": "100",
+      "subcategory2": {
+        "name": "Network services support"
+      },
+      "subcatagory2Weightage": "100",
+      "subcategory3": {
+        "name": "For Cloud Infrastructure support"
+      },
+      "subcatagory3Weightage": "100"
+    },
+    {
+      "id": "_e0wm7rto0",
+      "category": {
+        "name": "IT Infrastructure Services"
+      },
+      "subcategory": "",
+      "parameter": "",
+      "weightage": "",
+      "maxschore": "",
+      "schoringcriteria": "",
+      "catagoryWeightage": "100",
+      "subcategory1": {
+        "name": "Servers support"
+      },
+      "subcatagory1Weightage": "100",
+      "subcategory2": {
+        "name": "Network services support"
+      },
+      "subcatagory2Weightage": "100",
+      "subcategory3": {
+        "name": "For Cloud Infrastructure support"
+      },
+      "subcatagory3Weightage": "100"
+    },
+    {
+      "id": "_egz6xlzw0",
+      "category": "",
+      "cat_wightage": "",
+      "subcategory1": "",
+      "sc1_weightage": "",
+      "subcategory2": "",
+      "sc2_weightage": "",
+      "subcategory3": "",
+      "sc3_weightage": "",
+      "parameter": "",
+      "p_weightage": "",
+      "maxScore": "",
+      "scoringCriteria": ""
+    }
+  ],
+  "user": [
+    {
+      "firstName": "Akshay",
+      "lastName": "Shinde",
+      "email": "ashinde1760@gmail.com",
+      "mobileNumber": "9767897601",
+      "accessItem": "2",
+      "role": {
+        "roleName": "Super Admin",
+        "numOfUsers": "22",
+        "description": "Access all the actions",
+        "accessItem": "10",
+        "vendorTemplateAccess": [
+          {
+            "access": "View"
+          },
+          {
+            "access": "Download"
+          }
+        ],
+        "dashboardAccess": [
+          {
+            "access": "View"
+          },
+          {
+            "access": "Edit"
+          }
+        ],
+        "masterRepoAccess": [
+          {
+            "access": "View"
+          }
+        ],
+        "createdOn": 1658403116053,
+        "status": true,
+        "id": 6
+      },
+      "manager": {
+        "name": "Siddesh Kadus"
+      },
+      "partner": {
+        "name": "Krushna Kure"
+      },
+      "vendorTemplateAccess": [
+        {
+          "access": "View"
+        }
+      ],
+      "dashboardAccess": [
+        {
+          "access": "View"
+        },
+        {
+          "access": "Edit"
+        }
+      ],
+      "masterRepoAccess": [
+        {
+          "access": "View"
+        },
+        {
+          "access": "Edit"
+        }
+      ],
+      "createdOn": 1661672591029,
+      "status": "Active",
+      "id": 3
+    },
+    {
+      "firstName": "Shivraj",
+      "lastName": "Godle",
+      "email": "shivraj@gmail.com",
+      "mobileNumber": "9897867867",
+      "accessItem": "4",
+      "role": {
+        "roleName": "Admin",
+        "numOfUsers": "9",
+        "description": "Access of view and edit",
+        "accessItem": "1",
+        "vendorTemplateAccess": [
+          {
+            "access": "View"
+          }
+        ],
+        "dashboardAccess": [
+          {
+            "access": "View"
+          },
+          {
+            "access": "Edit"
+          }
+        ],
+        "masterRepoAccess": [
+          {
+            "access": "View"
+          }
+        ],
+        "createdOn": 1658403085973,
+        "status": true,
+        "id": 5
+      },
+      "manager": {
+        "name": "Akshay Shinde"
+      },
+      "partner": {
+        "name": "Shubham Saykar"
+      },
+      "vendorTemplateAccess": [
+        {
+          "access": "Edit"
+        },
+        {
+          "access": "Download"
+        }
+      ],
+      "dashboardAccess": [
+        {
+          "access": "Download"
+        }
+      ],
+      "masterRepoAccess": [
+        {
+          "access": "View"
+        }
+      ],
+      "createdOn": 1661672651096,
+      "status": "Active",
+      "id": 4
+    }
+  ],
+  "role": [
+    {
+      "roleName": "Admin",
+      "numOfUsers": "9",
+      "description": "Access of view and edit",
+      "accessItem": "1",
+      "vendorTemplateAccess": [
+        {
+          "access": "View"
+        }
+      ],
+      "dashboardAccess": [
+        {
+          "access": "View"
+        },
+        {
+          "access": "Edit"
+        }
+      ],
+      "masterRepoAccess": [
+        {
+          "access": "View"
+        }
+      ],
+      "createdOn": 1658403085973,
+      "status": true,
+      "id": 5
+    },
+    {
+      "roleName": "Super Admin",
+      "numOfUsers": "22",
+      "description": "Access all the actions",
+      "accessItem": "10",
+      "vendorTemplateAccess": [
+        {
+          "access": "View"
+        },
+        {
+          "access": "Download"
+        }
+      ],
+      "dashboardAccess": [
+        {
+          "access": "View"
+        },
+        {
+          "access": "Edit"
+        }
+      ],
+      "masterRepoAccess": [
+        {
+          "access": "View"
+        }
+      ],
+      "createdOn": 1658403116053,
+      "status": true,
+      "id": 6
+    },
+    {
+      "roleName": "Client",
+      "numOfUsers": "15",
+      "description": "Access of edit",
+      "accessItem": "5",
+      "vendorTemplateAccess": [
+        {
+          "access": "View"
+        },
+        {
+          "access": "Download"
+        }
+      ],
+      "dashboardAccess": [
+        {
+          "access": "View"
+        },
+        {
+          "access": "Edit"
+        }
+      ],
+      "masterRepoAccess": [
+        {
+          "access": "View"
+        }
+      ],
+      "createdOn": 1658403153019,
+      "status": true,
+      "id": 7
+    }
+  ],
+  "vendor": [
+    {
+      "vendorName": "Anemoi Technologies pvt. ltd.",
+      "spocName": "Siddesh Kadus",
+      "email": "siddesh.kadus@anemoitechnologies.com",
+      "contactNumber": "9767897602",
+      "lineOfBusiness": {
+        "businessName": "Logistics"
+      },
+      "createdOn": 1658299066770,
+      "status": false,
+      "id": 1
+    },
+    {
+      "vendorName": "Cyperts Technologies",
+      "spocName": "Ashutosh",
+      "email": "ashutosh@gmail.com",
+      "contactNumber": "10",
+      "lineOfBusiness": {
+        "businessName": "Retailing"
+      },
+      "createdOn": 1658403260089,
+      "status": false,
+      "id": 2
+    }
+  ],
+  "client": [
+    {
+      "clientName": "qq",
+      "industry": {
+        "industryName": "IT"
+      },
+      "passengerForm1": [
+        {
+          "firstName": "qq",
+          "lastName": "qq",
+          "email": "qq"
+        },
+        {
+          "firstName": "ww",
+          "lastName": "ww",
+          "email": "ww"
+        }
+      ],
+      "projectName": "qq",
+      "projectCode": "qq",
+      "partner": {
+        "name": "Shubham Saykar"
+      },
+      "manager": {
+        "name": "Akshay Shinde"
+      },
+      "businessUser": {
+        "name": "Ananya"
+      },
+      "rfpName": "qq",
+      "description": "qq",
+      "date": 1661502524412,
+      "file": "MLinterviewQuestion.docx",
+      "id": 6
+    },
+    {
+      "clientName": "PWC",
+      "industry": {
+        "industryName": "IT"
+      },
+      "passengerForm1": [
+        {
+          "firstName": "Gaurav",
+          "lastName": "Shukla",
+          "email": "gaurav@gmail.com"
+        },
+        {
+          "firstName": "Sachin",
+          "lastName": "Khaire",
+          "email": "sachin@gmail.com"
+        }
+      ],
+      "projectName": "IR Platform",
+      "projectCode": "IR1009",
+      "partner": {
+        "name": "Shubham Saykar"
+      },
+      "manager": {
+        "name": "Siddesh Kadus"
+      },
+      "businessUser": {
+        "name": "Ananya"
+      },
+      "rfpName": "IR",
+      "description": "Proposal",
+      "date": 1661512664338,
+      "file": "Proposal 1.0.docx",
+      "id": 7
+    },
+    {
+      "clientName": "aa",
+      "industry": {
+        "industryName": "IT"
+      },
+      "passengerForm1": [
+        {
+          "firstName": "qw",
+          "lastName": "a",
+          "email": ""
+        },
+        {
+          "firstName": "fdfdfs",
+          "lastName": "fwf",
+          "email": ""
+        },
+        {
+          "firstName": "ff",
+          "lastName": "efef",
+          "email": ""
+        },
+        {
+          "firstName": "fdf",
+          "lastName": "FFF",
+          "email": ""
+        }
+      ],
+      "projectName": "SAMPLW",
+      "projectCode": "EWD`",
+      "partner": {
+        "name": "Abhishek Gawade"
+      },
+      "manager": {
+        "name": "Tasdiq Shaikh"
+      },
+      "businessUser": [
+        {
+          "name": "Ashutosh"
+        }
+      ],
+      "rfpName": "DFDF",
+      "description": "FDFDF",
+      "date": 1662029074040,
+      "file": "Copy of PWCGrossReturnProposal_1.0.docx",
+      "id": 8
+    }
+  ],
+  "Template_Details": [
+    {
+      "name": "Grading Tool",
+      "description": "This is Field auditor system",
+      "createdOn": 1661403463626,
+      "createdBy": "Shivraj Godle",
+      "id": 1
+    },
+    {
+      "name": "Investor Relation",
+      "description": "IR project for creating investor friendly environment. ",
+      "createdOn": 1661410815138,
+      "createdBy": "Shivraj Godle",
+      "id": 2
+    },
+    {
+      "name": "Vendor Evaluation Tool",
+      "description": "Project for Vendor selection.",
+      "createdOn": 1661411327684,
+      "createdBy": "Shivraj Godle",
+      "id": 3
+    }
+  ],
+  "TemplateBuilder": [
+    {
+      "id": 1,
+      "category": [
+        {
+          "name": "Adherence to Regulations/Standard and Compliance",
+          "weightage": 100,
+          "subcategory": [
+            {
+              "subcategoryname": "Servers support",
+              "weightage": 100,
+              "parameter": [
+                {
+                  "parametername": "Incident management",
+                  "weightage": 100,
+                  "maxschore": "20",
+                  "schoringcriteria": "Criteria 2.4.1.1"
+                },
+                {
+                  "parametername": "Incident management",
+                  "weightage": 100,
+                  "maxschore": "20",
+                  "schoringcriteria": "Criteria 2.4.1.1"
+                }
+              ]
+            },
+            {
+              "subcategoryname": "Oj",
+              "weightage": 100,
+              "parameter": [
+                {
+                  "parametername": "Incident management",
+                  "weightage": 100,
+                  "maxschore": "20",
+                  "schoringcriteria": "Criteria 2.4.1.1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "category": [
+        {
+          "name": "Adherence to Regulations",
+          "weightage": 100,
+          "subcategory": [
+            {
+              "subcategoryname": "Servers ",
+              "weightage": 100,
+              "parameter": [
+                {
+                  "parametername": " management",
+                  "weightage": 100,
+                  "maxscore": "20",
+                  "schoringcriteria": "Criteria 2.4.1"
+                },
+                {
+                  "parametername": " management",
+                  "weightage": 100,
+                  "maxscore": "20",
+                  "schoringcriteria": "Criteria 2.4.1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+<div class="roles">
+  <h1>Templates</h1>
+</div>
+
+
+  <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input type="text" pInputText class="p-inputtext-sm" placeholder="Search" />
+  </span>
+  &nbsp;
+  <button
+    pButton
+    style="
+      background-color: #d04a02;
+      color: #f3f3f3;
+      font-family: Helvetica;
+      font-size: 18px;
+      float: right;
+      border: none;
+    "
+    label="Create New Template"
+    (click)="onClickAddTemplate()"
+    icon="pi pi-plus-circle"
+    class="p-button-sm pbuttonclass"
+  ></button>
+
+<!-- <div class="card" style="margin-top: 10px"> 
+    <p-table
+      styleClass="p-datatable-sm p-datatable-gridlines"
+      #dt
+      [value]="templateDetails"
+      [rows]="4"
+      [paginator]="true"
+      responsiveLayout="scroll"
+      [rowHover]="true"
+      dataKey="id"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [showCurrentPageReport]="true"
+      [globalFilterFields]="[
+        'templateName',
+        'Description',
+        'createdBy',
+        'createdOn']"
+    >
+      <ng-template pTemplate="header">
+        <tr class="myTable">
+          <th>Template name</th>
+          <th>Description<th>
+          <th>Created By</th>
+          <th>Created On</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-data>
+        <tr>
+          <td>{{ data.name }}</td>
+          <td>{{ data.description }}</td>
+          <td>{{ data.createdBy }}</td>
+          <td>{{ data.createdOn | date: "EEE, dd-MMM yyyy" }} </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+          In total there are {{ templateDetails ? templateDetails.length : 0 }} Templates.
+        </div>
+      </ng-template>
+    </p-table>      
+  </div> -->
+
+<!-- to view all Users -->
+<div class="card" style="margin-top: 10px">
+  <p-table
+    styleClass="p-datatable-sm p-datatable-gridlines templateTable"
+    #dt
+    [value]="templateDetails"
+    [rows]="7"
+    [paginator]="true"
+    responsiveLayout="scroll"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+  >
+    <ng-template pTemplate="header">
+      <tr class="myTable">
+        <th>Template Name</th>
+        <th>Description</th>
+        <th>Created By</th>
+        <th>Created on</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-templateDetails>
+      <tr>
+        <td>{{ templateDetails.name }}</td>
+        <td>{{ templateDetails.description }}</td>
+        <td>{{ templateDetails.createdBy }}</td>
+        <td>
+          {{ templateDetails.createdOn | date: "EEE, dd-MMM yyyy, h:mm:ss aa" }}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are
+        {{ templateDetails ? templateDetails.length : 0 }} template.
+      </div>
+    </ng-template>
+  </p-table>
+</div>

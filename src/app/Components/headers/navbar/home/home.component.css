@@ -1,0 +1,41 @@
+::ng-deep .pButton {
+  background-color: #d93954;
+  border-color: white;
+  float: right;
+}
+
+.pButton:hover {
+  background-color: #d30628;
+  border-color: white;
+}
+
+::ng-deep .p-field {
+  margin: 10px 0px;
+}
+
+
+::ng-deep .product-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 10px;
+}
+
+
+::ng-deep .product-grid-item {
+  margin: 0.5em;
+  border: 1px solid #dee2e6;
+  background-color: aquamarine;
+}
+
+
+::ng-deep .card {
+  padding: 2rem;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+::ng-deep .knob{
+  margin: 0px 7%;
+}

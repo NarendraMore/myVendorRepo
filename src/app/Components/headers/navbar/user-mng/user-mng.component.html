@@ -1,0 +1,744 @@
+<div class="buttons">
+  <!-- &nbsp;
+  <button
+    pButton
+    label="Upload User"
+    icon="pi pi-upload"
+    class="p-button-sm pbutton"
+    (click)="uploadUsers()"
+  ></button> -->
+</div>
+
+<!-- To add New User Details -->
+<form [formGroup]="userForm" autocomplete="off">
+  <p-dialog
+    class="userDialog"
+    [(visible)]="addUserDialogBox"
+    [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+    [style]="{ width: '80vw', margin: '0px 20px' }"
+  >
+    <ng-template pTemplate="header">
+      <div class="newroles"  style="font-size: 25px;">
+       Create New User
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="content" class="content">
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="firstName">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              formControlName="firstName"
+              pInputText
+              placeholder="Enter"
+              required
+            />
+            <small
+              *ngIf="
+                !userForm.get('firstName')?.valid &&
+                userForm.get('firstName')?.touched
+              "
+            >
+              <span style="color: red"> First Name not valid. </span>
+            </small>
+          </span>
+        </div>
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="lastName">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              formControlName="lastName"
+              pInputText
+              placeholder="Enter"
+              required
+            />
+            <small
+              *ngIf="
+                !userForm.get('lastName')?.valid &&
+                userForm.get('lastName')?.touched
+              "
+            >
+              <span style="color: red"> Last Name not valid. </span>
+            </small>
+          </span>
+        </div>
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="emailId">Email ID</label>
+            <input
+              type="email"
+              id="emailId"
+              formControlName="email"
+              pInputText
+              placeholder="Enter"
+              required
+            />
+            <small
+              *ngIf="
+                !userForm.get('email')?.valid && userForm.get('email')?.touched
+              "
+            >
+              <span style="color: red"> email is not valid. </span>
+            </small>
+          </span>
+        </div>
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="accessItems">Mobile Number.</label>
+            <input
+              type="text"
+              id="mobileNumber"
+              formControlName="mobileNumber"
+              pInputText
+              placeholder="Enter"
+              required
+            />
+            <small
+              *ngIf="
+                !userForm.get('mobileNumber')?.valid &&
+                userForm.get('mobileNumber')?.touched
+              "
+            >
+              <span style="color: red"> Mobile Number. is not valid. </span>
+            </small>
+          </span>
+        </div>
+      </div>
+      <div class="p-fluid grid">
+        <!-- <div class="field col-12 md:col-3">
+          <span>
+            <label for="accessItems">Access Item</label>
+            <input
+              type="text"
+              id="accessItems"
+              formControlName="accessItem"
+              pInputText
+              placeholder="Enter"
+            />
+          </span>
+        </div> -->
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="role">Role</label>
+            <p-dropdown
+              [required]="true"
+              styleClass="dropdown"
+              [options]="roles1"
+              formControlName="roleName"
+              optionLabel="roleName"
+              optionValue="roleName"
+              [virtualScroll]="true"
+              placeholder="Select"
+              (onChange)="roleSelection()"
+              appendTo="body"
+            ></p-dropdown>
+            <small
+              *ngIf="
+                !userForm.get('roleName')?.valid &&
+                userForm.get('roleName')?.touched
+              "
+            >
+              <span style="color: red"> mandatory Field </span>
+            </small>
+          </span>
+        </div>
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="manager">Manager</label>
+            <p-dropdown
+              [required]="true"
+              styleClass="dropdown"
+              [options]="managers"
+              formControlName="manager"
+              optionLabel="name"
+              [virtualScroll]="true"
+              optionValue="name"
+              placeholder="Select"
+              appendTo="body"
+            ></p-dropdown>
+            <small
+              *ngIf="
+                !userForm.get('manager')?.valid &&
+                userForm.get('manager')?.touched
+              "
+            >
+              <span style="color: red"> mandatory field </span>
+            </small>
+          </span>
+        </div>
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="partner">Partner</label>
+            <p-dropdown
+              [required]="true"
+              styleClass="dropdown"
+              [options]="partners"
+              formControlName="partner"
+              optionLabel="name"
+              [virtualScroll]="true"
+              optionValue="name"
+              placeholder="Select"
+              appendTo="body"
+            ></p-dropdown>
+            <small
+              *ngIf="
+                !userForm.get('partner')?.valid &&
+                userForm.get('partner')?.touched
+              "
+            >
+              <span style="color: red"> mandatory field </span>
+            </small>
+          </span>
+        </div>
+      </div>
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="status">Status</label> <br />
+            <p-inputSwitch
+             required="true" 
+              styleClass="dropdown"
+              trueValue="Active"
+              falseValue="In-active"
+              [(ngModel)]="checked"
+              (onChange)="handleChange($event)"
+              [ngModelOptions]="{ standalone: true }"
+            ></p-inputSwitch>
+          </span>
+          &nbsp;
+          <span style="font-size: large" *ngIf="checked">{{ checked }}</span>
+          <span style="font-size: large" *ngIf="!checked">{{ checked }}</span>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <div style="margin-top: 10px">
+        <button
+     
+        pButton
+        icon="pi pi-times-circle"
+        label="Cancel"
+        (click)="onClickCancle()"
+        style="
+        background-color: #ffffff;
+        color: #d04a02;
+        border-color: #d04a02;
+        font-family: Helvetica;
+        font-size: 14px;
+        width:120px;
+        height:40px;
+      "
+        class="p-button-outlined p-button-danger"
+      ></button>
+
+      <button    style="width:120px;height: 40px;padding-left: 27px;"
+        [disabled]="!userForm.valid"
+        pButton
+        icon="pi pi-check-circle"
+        label="Save"
+        class="p-button-sm pbuttonclass"
+        (click)="onClickSave()"
+      ></button>
+      </div>
+    </ng-template>
+  </p-dialog>
+</form>
+
+<!-- To upload user Details -->
+<p-dialog
+  [(visible)]="uploadDialog"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '40vw', margin: '0px 20px' }"
+>
+  <div style="margin-top: 10px">
+    <input
+      style="width: 100%"
+      class="p-inputtext-sm"
+      type="file"
+      pInputText
+      id="dos"
+      name="file"
+      required
+      autofocus
+      (change)="selectFile($event)"
+    />
+  </div>
+  <div style="margin-top: 40px">
+    <button
+      pButton
+      pRipple
+      label="Upload"
+      icon="pi pi-upload"
+      class="p-button-sm pbutton"
+      [disabled]="!selectedFiles"
+      (click)="uploadFile()"
+      style="float: right"
+    ></button>
+  </div>
+</p-dialog>
+
+<!-- edit user -->
+<p-dialog
+  class="userDialog"
+  [(visible)]="editUserDialog"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '80vw', margin: '0px 20px' }"
+>
+  <ng-template pTemplate="header">
+<div class="roles"  class="roles" style="font-size: 25px;">
+      Edit User
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="content" class="content">
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-3">
+        <span>
+          <label for="firstName">First Name</label>
+          <input
+            required
+            type="text"
+            id="firstName"
+            [(ngModel)]="userData.firstName"
+            pInputText
+            [pattern]="firstNamePattern"
+            #firstName="ngModel"
+          />
+          <small *ngIf="!firstName?.valid && firstName?.touched">
+            <span style="color: red"> Invalid First Name </span>
+          </small>
+        </span>
+      </div>
+      <div class="field col-12 md:col-3">
+        <span>
+          <label for="lastName">Last Name</label>
+          <input
+            required
+            type="text"
+            id="lastName"
+            [(ngModel)]="userData.lastName"
+            pInputText
+            [pattern]="lastNamePattern"
+            #lastName="ngModel"
+          />
+          <small *ngIf="!lastName?.valid && lastName?.touched">
+            <span style="color: red"> Invalid Last Name </span>
+          </small>
+        </span>
+      </div>
+      <div class="field col-12 md:col-3">
+        <span>
+          <label for="emailId">Email ID</label>
+          <input
+            required
+            type="email"
+            id="email"
+            [(ngModel)]="userData.email"
+            pInputText
+            [pattern]="emailPattern"
+            #email="ngModel"
+          />
+          <small *ngIf="!email?.valid && email?.touched">
+            <span style="color: red"> Invalid Email-Id </span>
+          </small>
+        </span>
+      </div>
+      <div class="field col-12 md:col-3">
+        <span>
+          <label for="accessItems">Mobile Number</label>
+          <input
+            required
+            type="text"
+            id="mobileNumber"
+            [(ngModel)]="userData.mobileNumber"
+            pInputText
+            [pattern]="mobnumPattern"
+            #mobileNumber="ngModel"
+          />
+          <small *ngIf="!mobileNumber?.valid && mobileNumber?.touched">
+            <span style="color: red"> Invalid Mobile Number </span>
+          </small>
+        </span>
+      </div>
+    </div>
+    <div class="p-fluid grid">
+      <!-- <div class="field col-12 md:col-3">
+        <span>
+          <label for="accessItems">Access Item</label>
+          <input
+            type="text"
+            id="accessItems"
+            [(ngModel)]="userData.accessItem"
+            pInputText
+          />
+        </span>
+      </div> -->
+      <div class="field col-12 md:col-3">
+        <span>
+          <label for="role">Role</label>
+          <p-dropdown
+            [required]="true"
+            styleClass="dropdown"
+            [options]="roles1"
+            [(ngModel)]="userData.roleName"
+            optionLabel="roleName"
+            optionValue="roleName"
+            [virtualScroll]="true"
+            placeholder="select Role"
+            [ngModelOptions]="{ standalone: true }"
+            appendTo="body"
+            #role="ngModel"
+          ></p-dropdown>
+        </span>
+        <small *ngIf="!role?.valid && role?.touched">
+          <span style="color: red"> mandatory field </span>
+        </small>
+      </div>
+      <div class="field col-12 md:col-3">
+        <span>
+          <label for="manager">Manager</label>
+          <p-dropdown
+            [required]="true"
+            styleClass="dropdown"
+            [options]="managers"
+            [(ngModel)]="userData.manager"
+            optionLabel="name"
+            optionValue="name"
+            [virtualScroll]="true"
+            placeholder="select Role"
+            [ngModelOptions]="{ standalone: true }"
+            appendTo="body"
+            #manager="ngModel"
+          ></p-dropdown>
+          <small *ngIf="!manager?.valid && manager?.touched">
+            <span style="color: red"> mandatory field </span>
+          </small>
+        </span>
+      </div>
+      <div class="field col-12 md:col-3">
+        <span>
+          <label for="partner">Partner</label>
+          <p-dropdown
+            [required]="true"
+            styleClass="dropdown"
+            [options]="partners"
+            [(ngModel)]="userData.partner"
+            optionLabel="name"
+            optionValue="name"
+            [virtualScroll]="true"
+            placeholder="select Partner"
+            [ngModelOptions]="{ standalone: true }"
+            appendTo="body"
+            #partner="ngModel"
+          ></p-dropdown>
+          <small *ngIf="!partner?.valid && partner?.touched">
+            <span style="color: red"> mandatory field </span>
+          </small>
+        </span>
+      </div>
+    </div>
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-3">
+        <span>
+          <label for="status">Status</label> <br />
+          <p-inputSwitch
+            trueValue="Active"
+            falseValue="In-active"
+            [(ngModel)]="checked"
+            (onChange)="handleChange($event)"
+            [ngModelOptions]="{ standalone: true }"
+          ></p-inputSwitch>
+          &nbsp;
+          <span style="font-size: large" *ngIf="checked">{{ checked }}</span>
+          <span style="font-size: large" *ngIf="!checked">{{ checked }}</span>
+        </span>
+      </div>
+    </div>
+    <!-- <hr style="width: 100%" />
+
+    <div class="access">
+      <h3>Access Management</h3>
+    </div>
+
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-4">
+        <p-card styleClass="accesscard">
+          <ng-template pTemplate="title">
+            <h3
+              style="
+                font-weight: bold;
+                background-color: #9aa4be;
+                padding: 10px;
+              "
+            >
+              <i class="pi pi-file"></i> Vendor Evaluation Template
+            </h3>
+          </ng-template>
+          <ng-template pTemplate="subtitle">
+            <div
+              *ngFor="let access of access1"
+              class="p-field-checkbox"
+              style="margin: 10px"
+            >
+              <p-checkbox
+                name="group2"
+                value="access"
+                [value]="access"
+                [(ngModel)]="userData.vendorTemplateAccess"
+                [inputId]="access.key"
+                [ngModelOptions]="{ standalone: true }"
+              ></p-checkbox>
+              &nbsp;
+              <label [for]="access.key">{{ access.access }}</label>
+            </div>
+          </ng-template>
+        </p-card>
+      </div>
+      <div class="field col-12 md:col-4">
+        <p-card styleClass="accesscard">
+          <ng-template pTemplate="title">
+            <h3
+              style="
+                font-weight: bold;
+                background-color: #9aa4be;
+                padding: 10px;
+              "
+            >
+              <i class="pi pi-chart-bar"></i> Dashboard
+            </h3>
+          </ng-template>
+          <ng-template pTemplate="subtitle">
+            <div
+              *ngFor="let access of access2"
+              class="p-field-checkbox"
+              style="margin: 10px"
+            >
+              <p-checkbox
+                name="group2"
+                value="access"
+                [value]="access"
+                [(ngModel)]="userData.dashboardAccess"
+                [inputId]="access.key"
+                [ngModelOptions]="{ standalone: true }"
+              ></p-checkbox>
+              &nbsp;
+              <label [for]="access.key">{{ access.access }}</label>
+            </div>
+          </ng-template>
+        </p-card>
+      </div>
+      <div class="field col-12 md:col-4">
+        <p-card styleClass="accesscard">
+          <ng-template pTemplate="title">
+            <h3
+              style="
+                font-weight: bold;
+                background-color: #9aa4be;
+                padding: 10px;
+              "
+            >
+              <i class="pi pi-book"></i> Master Repository
+            </h3>
+          </ng-template>
+          <ng-template pTemplate="subtitle">
+            <div
+              *ngFor="let access of access3"
+              class="p-field-checkbox"
+              style="margin: 10px"
+            >
+              <p-checkbox
+                name="group2"
+                value="access"
+                [value]="access"
+                [(ngModel)]="userData.masterRepoAccess"
+                [inputId]="access.key"
+                [ngModelOptions]="{ standalone: true }"
+              ></p-checkbox>
+              &nbsp;
+              <label [for]="access.key">{{ access.access }}</label>
+            </div>
+          </ng-template>
+        </p-card>
+      </div>
+    </div> -->
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <div style="margin-top: 10px">
+      <button 
+        pButton
+        icon="pi pi-times-circle"
+        label="Cancel"
+        (click)="onClickCancle()"
+        style="
+        background-color: #ffffff;
+        color: #d04a02;
+        border-color: #d04a02;
+        font-family: Helvetica;
+        font-size: 14px;
+        width:125px;
+      "
+       class="p-button-outlined p-button-danger" 
+      
+      ></button>
+
+   
+      <button   style="width:120px;height: 40px;padding-left: 27px;"
+        pButton
+        icon="pi pi-check-circle"
+        label="Save"
+        class="p-button-sm pbuttonclass"
+        (click)="onClickUpdate()"
+      ></button>
+    </div>
+  </ng-template>
+</p-dialog>
+
+<div class="roles" style="font-size: 35px;">
+  Users
+</div>
+<div  style="padding-top: 10px;" >
+<span class="p-input-icon-left">
+  <i class="pi pi-search"   style="padding-top: 5px;"></i>
+  <input
+    type="text"
+    pInputText
+    class="p-inputtext-sm"
+    (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+    placeholder="Search"
+  />
+</span> 
+<!-- &nbsp; &nbsp;
+<span>
+  <label for="role" style="padding-right: 5px;"> Filter</label>
+  <p-dropdown
+   
+    styleClass="dropdown"
+    optionLabel="role"
+    optionValue="role"
+    placeholder="Role"
+    appendTo="body"
+  ></p-dropdown>
+</span>
+<span>
+  <label for="role" style="padding-right: 5px;"> View</label>
+  <p-dropdown
+   
+    styleClass="dropdown"
+    optionLabel="role"
+    optionValue="role"
+    placeholder="All"
+    appendTo="body"
+  ></p-dropdown>
+</span> -->
+<div class="search">
+<button
+  pButton
+  label="Create New User"
+  icon="pi pi-plus-circle"
+  (click)="onClickAddUser()"
+  class="p-button-sm pbuttonclass"
+></button>
+&nbsp; &nbsp;
+
+<button
+  pButton
+  class="p-button-sm pbuttonclass"
+  icon="pi pi-trash"
+  (click)="deleteUser()"
+  [disabled]="!selectedId || !selectedId.length"
+></button>
+</div>
+</div>
+
+<!-- to view all Users -->
+<div class="card" style="margin-top: 30px;">
+  <p-table
+    styleClass="p-datatable-sm balancesheettable"
+    #dt
+    [value]="allUsers"
+    [rows]="7"
+    [paginator]="false"
+    responsiveLayout="scroll"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+    [globalFilterFields]="[
+      'firstName',
+      'lastName',
+      'role',
+      'email',
+      'mobileNumber',
+      'manager',
+      'partner',
+      'status'
+    ]"
+  >
+    <ng-template pTemplate="header">
+      <tr class="myTable">
+        <th>  </th>
+        <th pSortableColumn="firstName">First Name</th>
+        <th pSortableColumn="lastName">Last Name</th>
+        <th pSortableColumn="role">Role</th>
+        <th pSortableColumn="email">Email ID</th>
+        <th pSortableColumn="mobileNumber">Mobile Number</th>
+        <th pSortableColumn="manager">Manager</th>
+        <th pSortableColumn="partner">Partner</th>
+        <th pSortableColumn="status">Status</th>
+        <th>Created on</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>
+          <p-checkbox
+            name="group2"
+            value="user"
+            [value]="user.id"
+            [(ngModel)]="selectedId"
+            [inputId]="user.id"
+            [ngModelOptions]="{ standalone: true }"
+          ></p-checkbox>
+        </td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.roleName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.mobileNumber }}</td>
+        <td>{{ user.manager }}</td>
+        <td>{{ user.partner }}</td>
+        <td>{{ user.userStatus }}</td>
+        <td>{{ user.createdOn | date: "EEE, dd-MMM yyyy" }}</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-pencil"
+            class="p-button-sm pbuttonclass mr-2"
+            (click)="editUser(user.id)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <!-- <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are {{ allUsers ? allUsers.length : 0 }} Users.
+      </div>
+    </ng-template> -->
+  </p-table>
+</div>
+
+<!-- Notification msg's -->
+<p-toast></p-toast>
+<p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>

@@ -1,0 +1,94 @@
+::ng-dee   .pbuttonclass {
+  background-color: #c2551f;
+  border-color: white;
+}
+
+.pbuttonclass:hover {
+  background-color: #d30628;
+  border-color: white;
+}
+
+::ng-deep .balancesheettable {
+  border-radius: 10px;
+  border: 2px solid #9aa4be;
+  /* overflow: hidden !important; */
+}
+
+.search {
+  float: right;
+  padding-top: 10px;
+}
+
+.roles,
+h1 {
+  color: #415385;
+  font-size: 34px;
+  font-family: "Helvetica";
+}
+
+.newroles {
+  color: #415385;
+  font-size: 34px;
+  font-family: "Helvetica";
+}
+::ng-deep .accesscard {
+  background-color: #f3f3f3;
+}
+
+.access,
+h3 {
+  color: #3a3a3a;
+  font-size: 22px;
+  font-family: "Helvetica";
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+::ng-deep .userDialog {
+  background-color: #e68897;
+}
+
+tr:nth-child(even) {
+  background-color: #F3F3F3;
+}
+
+::ng-deep .pbuttonclass {
+  background-color: #D04A02 !important;
+  color: white !important;
+}
+
+/* .heading {
+    background-color: rgb(255, 187, 0);
+  }
+  
+  
+  h4{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  } */
+
+.myTable::ng-deep * {
+  background-color: #9aa4be !important;
+}
+
+
+::ng-deep input,textarea, .status{
+  margin-top: 10px !important;
+}
+::ng-deep .status{
+  margin-top: 10px !important;
+ 
+}
+
+tr:nth-child(even) {
+  background-color: #F3F3F3;
+}
+
+/* .ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; 
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442;
+} */

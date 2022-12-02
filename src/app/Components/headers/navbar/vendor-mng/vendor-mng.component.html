@@ -1,0 +1,458 @@
+
+<div class="container">
+<br />
+<div class="roles" style="font-size: 35px;">
+Vendors
+</div>
+
+<div  style="padding-top: 20px;" >
+<div style="float: left">
+  <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input
+      type="text"
+      style="width: 250px;"
+      pInputText
+      class="p-inputtext-sm"
+      (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+      placeholder="Search"
+    />
+  </span>
+</div>
+&nbsp;
+<div style="float: right">
+  <button
+    pButton
+    label="Add New Vendor"
+    icon="pi pi-plus-circle"
+    (click)="onClickAddVendor()"
+    class="p-button-sm pbuttonclass"
+  ></button>
+</div>
+<div  style="padding-top: 20px;" >
+<br />
+<!-- To add New Vendor Details -->
+<form [formGroup]="vendorForm" autocomplete="off">
+  <p-dialog
+  [(visible)]="updateButton"
+ 
+    class="userDialog"
+    [(visible)]="addVendorDialogBox"
+    [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+    [style]="{ width: '80vw', margin: '0px 20px' }"
+  >
+    <ng-template pTemplate="header">
+      <div class="newroles"  style="font-size: 25px;">
+        Add New Vendor
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="content" class="content">
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="vendorName">Vendor Name</label>
+            <input
+              type="text"
+              id="vendorName"
+              formControlName="vendorName"
+              pInputText
+              placeholder="Enter"
+            />
+            <small
+              *ngIf="
+                !vendorForm.get('vendorName')?.valid &&
+                vendorForm.get('vendorName')?.touched
+              "
+            >
+              <span style="color: red"> Invalid vendor name. </span>
+            </small>
+          </span>
+        </div>
+
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="spocName">SPOC Name</label>
+            <input
+              type="text"
+              id="spocName"
+              formControlName="spocName"
+              pInputText
+              placeholder="Enter"
+            />
+            <small
+              *ngIf="
+                !vendorForm.get('spocName')?.valid &&
+                vendorForm.get('spocName')?.touched
+              "
+            >
+              <span style="color: red"> Invalid SPOC name </span>
+            </small>
+          </span>
+        </div>
+
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="email">Email ID</label>
+            <input
+              type="email"
+              placeholder="Enter"
+              id="email"
+              formControlName="email"
+              pInputText
+            />
+            <small
+              *ngIf="
+                !vendorForm.get('email')?.valid &&
+                vendorForm.get('email')?.touched
+              "
+            >
+              <span style="color: red">Invalid Email-Id. </span>
+            </small>
+          </span>
+        </div>
+      </div>
+
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-3">
+          <label for="contactNumber">Contact Number</label>
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon input">+91</span>
+            <input
+              type="text"
+              pInputText
+              id="contactNumber"
+              formControlName="contactNumber"
+            />
+            
+          </div>
+          <small
+              *ngIf="
+                !vendorForm.get('contactNumber')?.valid &&
+                vendorForm.get('contactNumber')?.touched
+              "
+            >
+              <span style="color: red">Invalid Contact number. </span>
+            </small>
+        </div>
+        <!-- <div class="field col-12 md:col-3">
+          <span>
+            <label for="status">Status</label> <br />
+            <p-inputSwitch
+              [(ngModel)]="checked"
+              (onChange)="handleChange($event)"
+              [ngModelOptions]="{ standalone: true }"
+            ></p-inputSwitch>
+          </span>
+        </div> -->
+
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="lineOfBusiness">Line Of Business</label>
+            <p-dropdown
+              [required]="true"
+              styleClass="dropdown"
+              [options]="allLineOfBusiness"
+              formControlName="lineOfBusiness"
+              optionLabel="businessName"
+              optionValue="businessName"
+              [virtualScroll]="true"
+              placeholder="Select"
+              appendTo="body"
+            ></p-dropdown>
+            <small
+              *ngIf="
+                !vendorForm.get('lineOfBusiness')?.valid &&
+                vendorForm.get('lineOfBusiness')?.touched
+              "
+            >
+              <span style="color: red"> Field should no be empty </span>
+            </small>
+          </span>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+     
+      <button style="width:100px;height: 40px;padding-right: 100px;"
+        pButton
+        icon="pi pi-times-circle"
+        label="Cancel"
+        (click)="onClickCancle()"
+        style="
+          background-color: #ffffff;
+          color: #d04a02;
+          border-color: #d04a02;
+          font-family: Helvetica;
+          font-size: 18px;
+        "
+      class="p-button-outlined p-button-danger" 
+      ></button>
+      <button 
+      [disabled]="!vendorForm.valid"
+      pButton
+      icon="pi pi-check-circle"
+      label="{{updateButton? 'Update':'Save'}}"
+      style="
+        background-color: #d04a02;
+        color: #ffffff;
+        border-color: #d04a02;
+        font-family: Helvetica;
+        font-size: 18px;
+        width:120px;
+        height:45px;
+      "
+      class="p-button-sm pbuttonclass"
+      (click)="save? onClickSave():onClickUpdate()"
+    ></button>
+    </ng-template>
+  </p-dialog>
+</form>
+
+<!-- edit Vendor -->
+<p-dialog
+  class="userDialog"
+  [(visible)]="editVendorDialog"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '80vw', margin: '0px 20px' }"
+>
+  <ng-template pTemplate="header">
+    <div class="newroles"  style="font-size: 25px;">
+      Edit Vendor
+    </div>
+  </ng-template>
+  <ng-template pTemplate="content" class="content">
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-3">
+        <span>
+          <label for="vendorName">Vendor Name</label>
+          <input
+            type="text"
+            id="vendorName"
+            [(ngModel)]="vendorData.vendorName"
+            pInputText
+            [pattern]="vendorNamePattern"
+            #vendorName="ngModel"
+            required
+          />
+        </span>
+        <small *ngIf="!vendorName?.valid && vendorName?.touched">
+          <span style="color: red"> Vendor name is not valid. </span>
+        </small>
+      </div>
+
+      <div class="field col-12 md:col-3">
+        <span>
+          <label for="spocName">SPOC Name</label>
+          <input
+            type="text"
+            id="spocName"
+            [(ngModel)]="vendorData.spocName"
+            pInputText
+            [pattern]="spocNamePattern"
+            #spocName="ngModel"
+            required
+          />
+          <small *ngIf="!spocName?.valid && spocName?.touched">
+            <span style="color: red"> SPOC name is not valid. </span>
+          </small>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-3">
+        <span>
+          <label for="email">Email ID</label>
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="vendorData.email"
+            pInputText
+            [pattern]="emailPattern"
+            #email="ngModel"
+            required
+          />
+        </span>
+        <small *ngIf="!email?.valid && email?.touched">
+          <span style="color: red"> Vendor name is not valid. </span>
+        </small>
+      </div>
+    </div>
+
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-3">
+        <span>
+          <label for="contactNumber">Contact Number</label>
+          <input
+            type="text"
+            id="contactNumber"
+            [(ngModel)]="vendorData.contactNumber"
+            pInputText
+            [pattern]="mobnumPattern"
+            #mobNumber="ngModel"
+            required
+          />
+          <small *ngIf="!mobNumber?.valid && mobNumber?.touched">
+            <span style="color: red"> Contact number is not valid. </span>
+          </small>
+        </span>
+      </div>
+
+      <!-- <div class="field col-12 md:col-3">
+        <span>
+          <label for="status">Status</label> <br />
+          <p-inputSwitch
+            [(ngModel)]="checked"
+            (onChange)="handleChange($event)"
+            [ngModelOptions]="{ standalone: true }"
+          ></p-inputSwitch>
+        </span>
+      </div> -->
+
+      <div class="field col-12 md:col-3">
+        <span>
+          <label for="lineOfBusiness">Line Of Business</label>
+          <p-dropdown
+            styleClass="dropdown1"
+            [options]="allLineOfBusiness"
+            [(ngModel)]="vendorData.lineOfBusiness"
+            optionLabel="businessName"
+            optionValue="businessName"
+            [virtualScroll]="true"
+            placeholder="select Line Of Business"
+            [ngModelOptions]="{ standalone: true }"
+            #lineOfBusiness="ngModel"
+            [required]="true"
+            appendTo="body"
+          ></p-dropdown>
+          <small *ngIf="!lineOfBusiness?.valid && lineOfBusiness?.touched">
+            <span style="color: red"> Field should not be empty </span>
+          </small>
+        </span>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      icon="pi pi-times-circle"
+      label="Cancel"
+      style="
+      background-color: #ffffff;
+      color: #d04a02;
+      border-color: #d04a02;
+      font-family: Helvetica;
+      font-size: 18px;
+    "
+      (click)="onClickCancle()"
+      class="p-button-sm p-button-outlined"
+   
+    ></button>
+
+    <!-- <button
+      pButton
+      icon="pi pi-trash"
+      label="Delete"
+      style="
+        background-color: #ffffff;
+        color: #d04a02;
+        border-color: #d04a02;
+        font-family: Helvetica;
+        font-size: 18px;
+      "
+      (click)="deleteVendor(vendorData.vendorId)"
+      class="p-button-sm p-button-outlined"
+    ></button> -->
+
+    <button
+      pButton
+      icon="pi pi-check-circle"
+      label="Save"
+      class="p-button-sm pbuttonclass"
+      style="
+        background-color: #d04a02;
+        color: #ffffff;
+        border-color: #d04a02;
+        font-family: Helvetica;
+        font-size: 18px;
+      "
+      (click)="onClickUpdate()"
+    ></button>
+  </ng-template>
+</p-dialog>
+
+<!-- to view all Vendors -->
+<div class="card" style="margin-top: 10px">
+  <p-table
+    styleClass="p-datatable-sm balancesheettable"
+    #dt
+    [value]="allVendors"
+    [paginator]="false"
+    responsiveLayout="scroll"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+    [globalFilterFields]="[
+      'vendorName',
+      'spocName',
+      'email',
+      'contactNumber',
+      'lineOfBusiness'
+    ]"
+  >
+    <ng-template pTemplate="header">
+      <tr class="myTable">
+        <!-- <th></th> -->
+        <th pSortableColumn="vendorName">Vendor Name</th>
+        <th pSortableColumn="spocName">SPOC Name</th>
+        <th pSortableColumn="email">Email ID</th>
+        <th pSortableColumn="contactNumber">Mobile Number</th>
+        <th pSortableColumn="lineOfBusiness">Line Of Business</th>
+        <!-- <th></th> -->
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-vendor>
+      <tr (click)="editVendor(vendor.vendorId)">
+        <!-- <td>
+          <p-checkbox
+            name="group2"
+            value="vendor"
+            [value]="vendor.vendorId"
+            [(ngModel)]="selectedId"
+            [inputId]="vendor.vendorId"
+            [ngModelOptions]="{ standalone: true }"
+          ></p-checkbox>
+        </td> -->
+        <td>{{ vendor.vendorName }}</td>
+        <td>{{ vendor.spocName }}</td>
+        <td>{{ vendor.email }}</td>
+        <td>{{ vendor.contactNumber }}</td>
+        <td>{{ vendor.lineOfBusiness }}</td>
+        <!-- <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-pencil"
+            class="p-button-sm mr-2 pbuttonclass"
+            (click)="editVendor(vendor.vendorId)"
+          ></button>
+        </td> -->
+      </tr>
+    </ng-template>
+    <!-- <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are {{ allVendors ? allVendors.length : 0 }} vendor.
+      </div>
+    </ng-template> -->
+  </p-table>
+</div>
+
+<!-- Notification msg's -->
+<p-toast></p-toast>
+<p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>
+</div>

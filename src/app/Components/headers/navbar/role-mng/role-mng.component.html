@@ -1,0 +1,783 @@
+<!-- <span style="width: 100%; height: 7vh; background-color: orange;"> Role Management</span> -->
+<!-- <h4 class="heading">Role Management</h4> -->
+
+<div class="buttons">
+  <div class="roles"></div>
+</div>
+<br />
+<!-- To add New Role Details -->
+<form [formGroup]="roleForm" autocomplete="off">
+  <p-dialog
+    class="userDialog"
+    [(visible)]="addRoleDialogBox"
+    [style]="{ width: '80%', margin: '0px 20px' }"
+  >
+    <ng-template pTemplate="header">
+      <div class="newroles"  style="font-size: 25px;">
+        Create New Role
+      </div>
+    </ng-template>
+    <ng-template pTemplate="content" class="content">
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="roleName">Name</label>
+            <input
+              type="text"
+              id="roleName"
+              formControlName="roleName"
+              pInputText
+              placeholder="Enter"
+              required
+            />
+            <small
+              *ngIf="
+                !roleForm.get('roleName')?.valid &&
+                roleForm.get('roleName')?.touched
+              "
+            >
+              <span style="color: red"> Role Name not valid. </span>
+            </small>
+          </span>
+        </div>
+        <!-- <div class="field col-12 md:col-3">
+          <span>
+            <label for="users">No. of Users</label>
+            <input
+              type="text"
+              id="users"
+              formControlName="users"
+              pInputText
+              placeholder="Enter"
+              required
+            />
+            <small
+              *ngIf="
+                !roleForm.get('users')?.valid &&
+                roleForm.get('users')?.touched
+              "
+            >
+              <span style="color: red"> No of Users not valid. </span>
+            </small>
+          </span>
+        </div> -->
+        <div class="field col-12 md:col-6">
+          <span>
+            <label for="description">Description</label>
+            <textarea
+              type="text"
+              id="description"
+              formControlName="descriptions"
+              pInputTextarea
+              placeholder="Working on..."
+            ></textarea>
+            <small
+              *ngIf="
+                !roleForm.get('descriptions')?.valid &&
+                roleForm.get('descriptions')?.touched
+              "
+            >
+              <span style="color: red"> Description is not valid. </span>
+            </small>
+          </span>
+        </div>
+      </div>
+
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="status">Status</label> <br />
+            <p-inputSwitch
+              required="true"
+              styleClass="status"
+              trueValue="Active"
+              falseValue="In-active"
+              [(ngModel)]="checked"
+              (onChange)="handleChange($event)"
+              [ngModelOptions]="{ standalone: true }"
+            ></p-inputSwitch>
+            &nbsp;
+            <span style="font-size: large" *ngIf="checked">{{ checked }}</span>
+            <span style="font-size: large" *ngIf="!checked">{{ checked }}</span>
+          </span>
+        </div>
+        <!-- <div class="field col-12 md:col-3">
+          <span>
+            <label for="items">Access Items</label>
+            <input
+              type="text"
+              id="items"
+              formControlName="items"
+              pInputText
+              placeholder="Enter"
+              required
+            />
+            <small
+              *ngIf="
+                !roleForm.get('items')?.valid &&
+                roleForm.get('items')?.touched
+              "
+            >
+              <span style="color: red"> Access Items not valid. </span>
+            </small>
+          </span>
+        </div> -->
+      </div>
+      
+
+      <hr style="width: 100%" />
+
+      <div class="access">
+        <h3>Access Management</h3>
+      </div>
+
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-4">
+          <p-card styleClass="accesscard">
+            <ng-template pTemplate="title">
+              <h3
+                style="
+                  font-weight: bold;
+                  background-color: #9aa4be;
+                  padding: 10px;
+                "
+              >
+                <i class="pi pi-file"></i> Vendor Evaluation Template
+              </h3>
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+              <!-- <div
+                *ngFor="let access of access1"
+                class="p-field-checkbox"
+                style="margin: 10px"
+              >
+                <p-checkbox
+                  name="group2"
+                  value="access"
+                  [value]="access"
+                  [(ngModel)]="selectedAccess1"
+                  optionValue="access"
+                  [inputId]="access.key"
+                  [ngModelOptions]="{ standalone: true }"
+                ></p-checkbox>
+                &nbsp;
+                <label [for]="access.key">{{ access.access }}</label>
+              </div> -->
+              <p-multiSelect
+                [options]="access1"
+                formControlName="vendorTemplateAccess"
+                [required]="true"
+                defaultLabel="Select"
+                optionLabel="access"
+                optionValue="access"
+                [virtualScroll]="true"
+                selectedItemsLabel="{0} items selected"
+                appendTo="body" 
+             
+              ></p-multiSelect>
+              <small
+              *ngIf="
+                !roleForm.get('vendorTemplateAccess')?.valid &&
+                roleForm.get('vendorTemplateAccess')?.touched
+              "
+            >
+              <span style="color: red"> mandatory field </span>
+            </small>
+            </ng-template>
+          </p-card>
+        </div>
+        <div class=" field col-12 md:col-4">
+          <p-card styleClass="accesscard">
+            <ng-template pTemplate="title">
+              <h3
+                style="
+                  font-weight: bold;
+                  background-color: #9aa4be;
+                  padding: 10px;
+                "
+              >
+                <i ><img src="assets/Images/dashboard.png" style="height: 17px;width:20px;" alt=""></i> Dashboard
+              </h3>
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+              <!-- <div
+                *ngFor="let access of access2"
+                class="p-field-checkbox"
+                style="margin: 10px"
+              >
+                <p-checkbox
+                  name="group2"
+                  value="access"
+                  [value]="access"
+                  [(ngModel)]="selectedAccess2"
+                  [inputId]="access.key"
+                  [ngModelOptions]="{ standalone: true }"
+                ></p-checkbox>
+                &nbsp;
+                <label [for]="access.key">{{ access.access }}</label>
+              </div> -->
+              <p-multiSelect
+                [options]="access2"
+                formControlName="dashboardAccess"
+                [required]="true"
+                defaultLabel="Select"
+                optionLabel="access"
+                optionValue="access"
+                [virtualScroll]="true"
+                selectedItemsLabel="{0} items selected"
+                appendTo="body"
+              ></p-multiSelect>
+              <small
+              *ngIf="
+                !roleForm.get('dashboardAccess')?.valid &&
+                roleForm.get('dashboardAccess')?.touched
+              "
+            >
+              <span style="color: red"> mandatory field </span>
+            </small>
+            </ng-template>
+          </p-card>
+        </div>
+        <div class="field col-12 md:col-4">
+          <p-card styleClass="accesscard">
+            <ng-template pTemplate="title">
+              <h3
+                style="
+                  font-weight: bold;
+                  background-color: #9aa4be;
+                  padding: 10px;
+                "
+              >
+                <i><img src="assets/Images/master_r.png" style="height: 20px;width:23px;" alt=""></i> Master Repository
+              </h3>
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+              <!-- <div
+                *ngFor="let access of access3"
+                class="p-field-checkbox"
+                style="margin: 10px"
+              >
+                <p-checkbox
+                  name="group2"
+                  value="access"
+                  [value]="access"
+                  [(ngModel)]="selectedAccess3"
+                  [inputId]="access.key"
+                  [ngModelOptions]="{ standalone: true }"
+                ></p-checkbox>
+                &nbsp;
+                <label [for]="access.key">{{ access.access }}</label>
+              </div> -->
+              <p-multiSelect
+                [options]="access3"
+                formControlName="masterRepoAccess"
+                [required]="true"
+                defaultLabel="Select"
+                optionLabel="access"
+                optionValue="access"
+                [virtualScroll]="true"
+                selectedItemsLabel="{0} items selected"
+                appendTo="body"
+              ></p-multiSelect>
+              <small
+              *ngIf="
+                !roleForm.get('masterRepoAccess')?.valid &&
+                roleForm.get('masterRepoAccess')?.touched
+              "
+            >
+              <span style="color: red"> mandatory field </span>
+            </small>
+            </ng-template>
+          </p-card>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <div style="margin-top: 10px">
+        <button 
+        pButton
+        icon="pi pi-times-circle"
+        label="Cancel"
+        (click)="onClickCancle()"
+        style="
+        background-color: #ffffff;
+        color: #d04a02;
+        border-color: #d04a02;
+        font-family: Helvetica;
+        font-size: 16px;
+      "
+        class="p-button-outlined p-button-danger" 
+      ></button>
+        <button
+       
+          [disabled]="roleForm.invalid"
+          pButton
+          icon="pi pi-check-circle"
+          label="Save"
+          style="
+          background-color: #d04a02;
+          color: #ffffff;
+          border-color: #d04a02;
+          font-family: Helvetica;
+          font-size: 18px;
+          width:120px;
+          height:45px;
+        "
+          class="p-button-sm pbuttonclass"
+          (click)="onClickSave()"
+        ></button>
+
+      
+      </div>
+    </ng-template>
+  </p-dialog>
+</form>
+
+<!-- To upload user Details -->
+<p-dialog
+  [(visible)]="uploadDialog"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '40vw', margin: '0px 20px' }"
+>
+  <div style="margin-top: 10px">
+    <input
+      style="width: 100%"
+      class="p-inputtext-sm"
+      type="file"
+      pInputText
+      id="dos"
+      name="file"
+      required
+      autofocus
+      (change)="selectFile($event)"
+    />
+  </div>
+  <div style="margin-top: 40px">
+    <button
+      pButton
+      pRipple
+      label="Upload"
+      icon="pi pi-upload"
+      class="p-button-sm pbutton"
+      [disabled]="!selectedFiles"
+      (click)="uploadFile()"
+      style="float: right"
+    ></button>
+  </div>
+</p-dialog>
+
+<!-- edit user -->
+<form [formGroup]="roleForm" autocomplete="off">
+  <p-dialog
+    class="userDialog"
+    [(visible)]="editRoleDialog"
+    [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+    [style]="{ width: '80vw', margin: '0px 20px' }"
+  >
+    <ng-template pTemplate="header">
+      <div class="newroles"  style="font-size: 25px;">
+         Edit Role
+      </div>
+    </ng-template>
+    <ng-template pTemplate="content" class="content">
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="roleName">Name</label>
+            <input
+              required
+              type="text"
+              id="roleName"
+              [(ngModel)]="roleData.roleName"
+              pInputText
+              [ngModelOptions]="{ standalone: true }"
+              [pattern]="roleNamePattern"
+              #roleName="ngModel"
+              
+            />
+            <small
+              *ngIf="
+                !roleName?.valid &&
+                roleName?.touched
+              "
+            >
+              <span style="color: red"> Invalid Role Name </span>
+            </small>
+          </span>
+        </div>
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="users">No. of Users</label>
+            <input
+              required
+              type="text"
+              id="users"
+            
+              pInputText
+          
+             
+            
+              
+            />
+            <!-- <small
+              *ngIf="
+                !users?.valid &&
+                users?.touched
+              "
+            >
+              <span style="color: red"> Invalid No. of Users </span>
+            </small> -->
+          </span>
+        </div>
+        <div class="field col-12 md:col-6">
+          <span>
+            <label for="description">Description</label>
+            <textarea
+              type="text"
+              id="descriptions"
+              [(ngModel)]="roleData.descriptions"
+              pInputText
+              [ngModelOptions]="{ standalone: true }"
+              [pattern]="descriptionPattern"
+              #descriptions="ngModel"
+              required
+            ></textarea>
+            <small
+              *ngIf="
+                !descriptions?.valid &&
+                descriptions?.touched
+              "
+            >
+              <span style="color: red"> Invalid Description </span>
+            </small>
+          </span>
+        </div>
+      </div>
+
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="status">Status</label><br><br>
+            <p-inputSwitch
+              trueValue="Active"
+              falseValue="In-active"
+              [(ngModel)]="roleData.checked"
+              (onChange)="handleChange($event)"
+              [ngModelOptions]="{ standalone: true }"
+              [disabled]="!roleData"
+            ></p-inputSwitch>
+            &nbsp;
+            <span style="font-size: large" *ngIf="checked">{{ checked }}</span>
+            <span style="font-size: large" *ngIf="!checked">{{ checked }}</span>
+          </span>
+        </div>
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="items">Access Items</label>
+            <input
+              required
+              type="text"
+              id="items"
+          
+              pInputText
+            
+             
+              
+            />
+            <!-- <small
+              *ngIf="
+                !items?.valid &&
+                items?.touched
+              "
+            >
+              <span style="color: red"> Invalid Access Items </span>
+            </small> -->
+          </span>
+        </div>
+      </div>
+      <hr style="width: 100%" />
+
+      <div class="access">
+        <h3>Access Management</h3>
+      </div>
+
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-4">
+          <p-card styleClass="accesscard">
+            <ng-template pTemplate="title">
+              <h3
+                style="
+                  font-weight: bold;
+                  background-color: #9aa4be;
+                  padding: 10px;
+                "
+              >
+                <i class="pi pi-file"></i> Vendor Evaluation Template
+              </h3>
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+              <!-- <div
+              *ngFor="let access of access1"
+              class="p-field-checkbox"
+              style="margin: 10px"
+            >
+              <p-checkbox
+                name="group2"
+                value="access"
+                [value]="access"
+                [(ngModel)]="roleData.vendorTemplateAccess"
+                [inputId]="access.key"
+                [ngModelOptions]="{ standalone: true }"
+              ></p-checkbox>
+              &nbsp;
+              <label [for]="access.key">{{ access.access }}</label>
+            </div> -->
+              <p-multiSelect
+                [options]="access1"
+                [(ngModel)]="roleData.vendorTemplateAccess"
+                
+                defaultLabel="Select"
+                optionLabel="access"
+                optionValue="access"
+                [virtualScroll]="true"
+                selectedItemsLabel="{0} items selected"
+                [ngModelOptions]="{ standalone: true }"
+                appendTo="body"
+              ></p-multiSelect>
+            </ng-template>
+          </p-card>
+        </div>
+        <div class="field col-12 md:col-4">
+          <p-card styleClass="accesscard">
+            <ng-template pTemplate="title">
+              <h3
+                style="
+                  font-weight: bold;
+                  background-color: #9aa4be;
+                  padding: 10px;
+                "
+              >
+              <i ><img src="assets/Images/dashboard.png" style="height: 17px;width:20px;" alt=""></i> Dashboard
+              </h3>
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+              <!-- <div
+              *ngFor="let access of access2"
+              class="p-field-checkbox"
+              style="margin: 10px"
+            >
+              <p-checkbox
+                name="group2"
+                value="access"
+                [value]="access"
+                [(ngModel)]="roleData.dashboardAccess"
+                [inputId]="access.key"
+                [ngModelOptions]="{ standalone: true }"
+              ></p-checkbox>
+              &nbsp;
+              <label [for]="access.key">{{ access.access }}</label>
+            </div> -->
+              <p-multiSelect
+                [options]="access2"
+                defaultLabel="Select"
+                optionLabel="access"
+                [(ngModel)]="roleData.dashboardAccess"
+                optionValue="access"
+                [virtualScroll]="true"
+                placeholder="select"
+                [ngModelOptions]="{ standalone: true }"
+                selectedItemsLabel="{0} items selected"
+                appendTo="body"
+
+              ></p-multiSelect>
+            </ng-template>
+          </p-card>
+        </div>
+        <div class="field col-12 md:col-4">
+          <p-card styleClass="accesscard">
+            <ng-template pTemplate="title">
+              <h3
+                style="
+                  font-weight: bold;
+                  background-color: #9aa4be;
+                  padding: 10px;
+                "
+              >
+              <i><img src="assets/Images/master_r.png" style="height: 20px;width:23px;" alt=""></i> Master Repository
+              </h3>
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+              <!-- <div
+              *ngFor="let access of access3"
+              class="p-field-checkbox"
+              style="margin: 10px"
+            >
+              <p-checkbox
+                name="group2"
+                value="access"
+                [value]="access"
+                [(ngModel)]="roleData.masterRepoAccess"
+                [inputId]="access.key"
+                [ngModelOptions]="{ standalone: true }"
+              ></p-checkbox>
+              &nbsp;
+              <label [for]="access.key">{{ access.access }}</label>
+            </div> -->
+              <p-multiSelect
+                [options]="access3"
+                [(ngModel)]="roleData.masterRepoAccess"
+                defaultLabel="Select"
+                optionLabel="access"
+                optionValue="access"
+                [virtualScroll]="true"
+                selectedItemsLabel="{0} items selected"
+                [ngModelOptions]="{ standalone: true }"
+                appendTo="body"
+
+              ></p-multiSelect>
+            </ng-template>
+          </p-card>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <div style="margin-top: 10px">
+        <button  style="width:100px;height: 40px;padding-right: 100px;"
+        pButton
+        icon="pi pi-times-circle"
+        label="Cancel"
+        (click)="onClickCancle()"
+        style="
+        background-color: #ffffff;
+        color: #d04a02;
+        border-color: #d04a02;
+        font-family: Helvetica;
+        font-size: 16px;
+      "
+        class="p-button-outlined p-button-danger" 
+      ></button>
+        <button  style="width:120px;height: 40px;padding-left: 27px;"
+          pButton
+          icon="pi pi-check-circle"
+          label="Save"
+          class="p-button-sm pbuttonclass"
+          (click)="onClickUpdate()"
+        ></button>
+     
+      </div>
+    </ng-template>
+  </p-dialog>
+</form>
+
+<div class="roles" style="font-size: 35px;">
+  Roles
+</div>
+<div  style="padding-top: 20px;" >
+<span class="p-input-icon-left">
+  <i class="pi pi-search"   style="padding-top: 5px;"></i>
+  <input type="text" pInputText class="p-inputtext-sm" placeholder="Search" 
+  (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+  
+  />
+  
+</span>
+
+<div class="search">
+  <button
+    pButton
+    label="Create New Role"
+    icon="pi pi-plus-circle"
+    (click)="onClickAddRole()"
+    class="p-button-sm pbuttonclass"
+  ></button>
+
+  &nbsp;
+
+  <!-- <button
+    pButton
+    class="p-button-sm p-button-outlined mr-2 pbuttonclass"
+    icon="pi pi-trash"
+    label="Delete"
+    (click)="deleteRole()"
+    [disabled]="!selectedId || !selectedId.length"
+  ></button> -->
+</div>
+</div>
+
+<!-- to view all Users -->
+<div class="card"  style="margin-top: 10px ">
+  <p-table 
+  styleClass="p-datatable-sm balancesheettable"
+   #dt 
+    [value]="allRoles"
+    [rows]="7"
+    [paginator]="false"
+    responsiveLayout="scroll"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+    [globalFilterFields]="[
+    'roleName',
+    'descriptions',
+    'createdOn',
+  ]"
+  >
+    <ng-template pTemplate="header">
+      <tr class="myTable">
+        <!-- <th></th> -->
+        <th>Role</th>
+        <th>Description</th>
+        <th>No.of Users</th>
+        <th>Access Items</th>
+        <th>Last Edit</th>
+        <th>Created on</th>
+        <!-- <th></th> -->
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-role>
+      <tr (click)="editRole(role.roleId)">
+        <!-- <td>
+          <p-checkbox
+            name="group2"
+            value="role"
+            [value]="role.roleId"
+            [(ngModel)]="selectedId"
+            [inputId]="role.roleId"
+            [ngModelOptions]="{ standalone: true }"
+            (onChange)="onClickCheckBox()"
+          ></p-checkbox>
+        </td> -->
+        <td>{{ role.roleName }}</td>
+        <td>{{ role.descriptions }}</td>
+        <td></td>
+        <td></td>
+        <td>{{ role.editedOn | date: "EEE, dd-MMM yyyy, h:mm:ss aa" }}</td>
+        <td>{{ role.createdOn | date: "EEE, dd-MMM yyyy, h:mm:ss aa" }}</td>
+        <!-- <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-pencil"
+            class="p-button-sm pbuttonclass"
+            (click)="editRole(role.roleId)"
+          ></button>
+        </td> -->
+      </tr>
+    </ng-template>
+    <!-- <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are {{ allRoles ? allRoles.length : 0 }} Roles.
+      </div>
+    </ng-template> -->
+  </p-table>
+</div>
+
+<!-- Notification msg's -->
+<p-toast></p-toast>
+<p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>
